@@ -83,3 +83,48 @@ This repository presents a comprehensive computational study addressing three fu
 ## Computational Architecture
 
 ### Classical Stack
+
+PySCF 2.6.2
+├── RHF (converged SCF)
+├── DFT/B3LYP (geometry optimization)
+├── MP2 (perturbative correlation)
+├── CCSD(T) (gold standard energetics)
+├── CASCI/CASSCF (active space validation)
+└── Hessian/thermochemistry (harmonic analysis)
+
+
+### Quantum Stack
+Optimized VQE (NumPy/OpenFermion)
+├── Active space: (2e,2o) → 4 qubits [memory-optimized]
+├── Ansatz: Hardware-efficient UCCSD-inspired
+├── Mapper: Jordan-Wigner / Parity (with 2-qubit reduction)
+├── Optimizer: COBYLA (gradient-free, NISQ-compatible)
+├── Noise model: IBM Eagle (T₁=100μs, T₂=80μs, p₂q=0.3%)
+└── Error mitigation: Richardson ZNE (k=3)
+
+### Installation
+# Clone repository
+git clone https://github.com/[username]/CO2-NH3-Carbamic-Acid-Quantum-Modeling.git
+cd CO2-NH3-Carbamic-Acid-Quantum-Modeling
+
+# Install dependencies (NumPy 1.26 + PySCF + OpenFermion)
+pip install numpy==1.26.4 scipy==1.12.0
+pip install pyscf==2.6.2 openfermion==1.6.1
+pip install matplotlib seaborn pandas
+Execution
+Python
+Copy
+# Jupyter notebook (recommended)
+jupyter notebook CO2_NH3_Carbamic_Acid_Quantum_Classical_Simulation.ipynb
+
+# Or run cells sequentially in Google Colab
+# Runtime → Run all (estimated: 5-8 minutes with optimized settings)
+#Theoretical Background
+Why This Reaction Matters
+Carbamic acid (NH₂COOH) is the simplest carbamate and a critical intermediate in:
+Carbon capture technologies (CO₂ sequestration as ammonium carbamate)
+Urea synthesis (Haber-Bosch → Wöhler historical connection)
+Prebiotic chemistry (atmospheric CO₂ fixation mechanisms)
+The gas-phase reaction is kinetically hindered (Eₐ ≈ 110 kJ/mol) despite being thermodynamically favorable (ΔG ≈ −12 kJ/mol), making it an ideal candidate for transition state theory and quantum tunneling investigations.
+Quantum Computing Relevance
+The (4e,4o) → 8-qubit active space represents a classically intractable FCI dimension of C(8,4)² = 4900 determinants, yet requires only polynomial VQE parameters (𝒪(n²) = 16-32). This exemplifies the quantum advantage potential for molecular electronic structure.
